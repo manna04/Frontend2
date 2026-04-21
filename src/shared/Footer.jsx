@@ -63,9 +63,6 @@ export default function Footer() {
       </div>
 
       <div className="ft-bottom">
-        <span style={{ color: 'rgba(255,255,255,0.45)' }}>
-          © 2025 <span style={{ color: '#1B8FA6' }}>Accelia Clinical Solutions</span>. All rights reserved.
-        </span>
         <span style={{ color: 'rgba(255,255,255,0.3)' }}>
           Advancing Clinical Excellence with Integrity, Compliance, and Precision.
         </span>
