@@ -13,9 +13,12 @@ import Careers      from './pages/Careers';
 import Locations    from './pages/Locations';
 import Contact      from './pages/Contact';
 import Loader       from './pages/Loader';
+import Dynamic      from './pages/Dynamic';
+
 
 import './assets/css/variables.css';
 import './assets/css/global.css';
+import AllNews from './pages/Dynamic';
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -38,6 +41,9 @@ export default function App() {
           <Route path="/careers"   element={<Careers />} />
           <Route path="/locations" element={<Locations />} />
           <Route path="/contact"   element={<Contact />} />
+          <Route path="/AllNews"   element={<Dynamic />} />
+          <Route path="/all-news" element={<AllNews />} />
+
           {/* Catch-all */}
           <Route path="*"          element={<Index />} />
         </Routes>

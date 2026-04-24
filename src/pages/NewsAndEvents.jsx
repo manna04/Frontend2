@@ -92,7 +92,7 @@ export default function NewsAndEvents() {
             ))}
           </div>
           <div style={{ marginTop:28 }}>
-            <Link to="#" className="view-all-btn">View All News</Link>
+            <Link to="/all-news?type=news" className="view-all-btn">View All News</Link>
           </div>
         </section>
 
@@ -110,7 +110,7 @@ export default function NewsAndEvents() {
             ))}
           </div>
           <div style={{ marginTop:28 }}>
-            <Link to="#" className="view-all-btn">View All Reports</Link>
+            <Link to="/all-news?type=reports" className="view-all-btn">View All Reports</Link>
           </div>
         </section>
 
@@ -129,7 +129,7 @@ export default function NewsAndEvents() {
             ))}
           </div>
           <div style={{ marginTop:28 }}>
-            <Link to="#" className="view-all-btn">View All Events</Link>
+            <Link to="/all-news?type=events" className="view-all-btn">View All Events</Link>
           </div>
         </section>
 

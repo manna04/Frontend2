@@ -1,8 +1,8 @@
 // =====================================================
-// Careers.jsx — Careers Page
+// Careers.jsx — Full Version with CV Upload & Vacancies
 // =====================================================
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Nav from '../shared/Nav';
 import Footer from '../shared/Footer';
 import { JOBS } from '../shared/constants';
@@ -12,7 +12,7 @@ import '../assets/css/pages.css';
 
 const DEPARTMENTS = [
   { icon:'🔬', title:'Clinical Operations',   desc:'Manage trials with precision and impact, improving patient outcomes.' },
-  { icon:'📊', title:'Project Management',     desc:'Lead complex projects across global sites with strategic oversight.' },
+  { icon:'📊', title:'Project Management',    desc:'Lead complex projects across global sites with strategic oversight.' },
   { icon:'📈', title:'Biometrics',             desc:'Deliver data-driven insights with accuracy and regulatory alignment.' },
   { icon:'⚕️',  title:'Medical Affairs',       desc:'Bridge science and strategy through clinical expertise and evidence.' },
   { icon:'📋', title:'Regulatory Affairs',     desc:'Navigate complex global regulations to support trial success.' },
@@ -27,52 +27,114 @@ const WHY = [
 ];
 
 function ApplyModal({ job, onClose, onSubmit }) {
-  const [form, setForm] = useState({ name:'', email:'', phone:'', note:'' });
+  const [form, setForm] = useState({ name:'', email:'', phone:'', cv: null });
 
   if (!job) return null;
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    // Check if the file is a PDF
+    if (file && file.type !== "application/pdf") {
+      alert("Security Alert: Only PDF files are allowed for CV upload.");
+      e.target.value = ""; // Clear the input
+      setForm({ ...form, cv: null });
+      return;
+    }
+    setForm({ ...form, cv: file });
+  };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-box" onClick={e => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>✕</button>
-        <span className="m-tag">Apply Now</span>
-        <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:22, color:'#0B1F3A', margin:'10px 0 6px' }}>
+        <span className="m-tag">Application Form</span>
+        
+        <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:24, color:'#0B1F3A', margin:'12px 0 4px' }}>
           {job.title}
         </h2>
-        <p style={{ color:'#5E6E82', marginBottom:22, fontSize:13.5 }}>
+
+        {/* Vacancy Info in Modal */}
+        <div style={{ marginBottom: 18 }}>
+          <span style={{ background: '#E6F4F1', color: '#1B8FA6', padding: '5px 12px', borderRadius: '6px', fontSize: '12.5px', fontWeight: '700', border: '1px solid rgba(27, 143, 166, 0.2)' }}>
+            👥 Vacancies: {job.openings || 1} Positions
+          </span>
+        </div>
+
+        <p style={{ color:'#5E6E82', marginBottom:24, fontSize:13.5, borderBottom: '1px solid #eee', paddingBottom: 15 }}>
           📍 {job.location} &nbsp;|&nbsp; ⏱ {job.type} &nbsp;|&nbsp; 🏢 {job.dept}
         </p>
 
-        <div style={{ display:'flex', flexDirection:'column', gap:14 }}>
-          {[
-            { label:'Full Name *',  key:'name',  type:'text',  placeholder:'Your full name' },
-            { label:'Email *',      key:'email', type:'email', placeholder:'your@email.com' },
-            { label:'Phone',        key:'phone', type:'tel',   placeholder:'+91 XXXXXXXXXX' },
-          ].map(f => (
-            <div key={f.key}>
-              <label style={{ display:'block', color:'#5E6E82', fontSize:12.5, marginBottom:5, fontWeight:500 }}>{f.label}</label>
-              <input
-                type={f.type}
-                placeholder={f.placeholder}
-                value={form[f.key]}
-                onChange={e => setForm({ ...form, [f.key]: e.target.value })}
-                style={{ width:'100%', background:'#F2F7FA', border:'1px solid #D8E4ED', borderRadius:9, padding:'11px 14px', fontSize:13.5, outline:'none', fontFamily:'inherit' }}
-              />
-            </div>
-          ))}
+        <div style={{ display:'flex', flexDirection:'column', gap:15 }}>
           <div>
-            <label style={{ display:'block', color:'#5E6E82', fontSize:12.5, marginBottom:5, fontWeight:500 }}>Cover Note</label>
-            <textarea
-              placeholder="Tell us about your relevant experience..."
-              value={form.note}
-              onChange={e => setForm({ ...form, note: e.target.value })}
-              style={{ width:'100%', background:'#F2F7FA', border:'1px solid #D8E4ED', borderRadius:9, padding:'11px 14px', fontSize:13.5, minHeight:100, resize:'vertical', outline:'none', fontFamily:'inherit' }}
+            <label style={{ display:'block', color:'#5E6E82', fontSize:12.5, marginBottom:6, fontWeight:600 }}>Full Name *</label>
+            <input
+              type="text"
+              placeholder="Enter your full name"
+              required
+              value={form.name}
+              onChange={e => setForm({ ...form, name: e.target.value })}
+              style={{ width:'100%', background:'#F2F7FA', border:'1px solid #D8E4ED', borderRadius:9, padding:'12px 15px', fontSize:14, outline:'none' }}
             />
           </div>
+
+          <div>
+            <label style={{ display:'block', color:'#5E6E82', fontSize:12.5, marginBottom:6, fontWeight:600 }}>Email Address *</label>
+            <input
+              type="email"
+              placeholder="your@email.com"
+              required
+              value={form.email}
+              onChange={e => setForm({ ...form, email: e.target.value })}
+              style={{ width:'100%', background:'#F2F7FA', border:'1px solid #D8E4ED', borderRadius:9, padding:'12px 15px', fontSize:14, outline:'none' }}
+            />
+          </div>
+
+          <div>
+            <label style={{ display:'block', color:'#5E6E82', fontSize:12.5, marginBottom:6, fontWeight:600 }}>Phone Number *</label>
+            <input
+              type="tel"
+              placeholder="+91 XXXXXXXXXX"
+              required
+              value={form.phone}
+              onChange={e => setForm({ ...form, phone: e.target.value })}
+              style={{ width:'100%', background:'#F2F7FA', border:'1px solid #D8E4ED', borderRadius:9, padding:'12px 15px', fontSize:14, outline:'none' }}
+            />
+          </div>
+
+          {/* PDF CV Upload */}
+          <div>
+            <label style={{ display:'block', color:'#5E6E82', fontSize:12.5, marginBottom:6, fontWeight:600 }}>Upload Your CV (PDF Only) *</label>
+            <input
+              type="file"
+              required
+              accept="application/pdf"
+              onChange={handleFileChange}
+              style={{ 
+                width:'100%', 
+                background:'#F2F7FA', 
+                border:'1px dashed #1B8FA6', 
+                borderRadius:9, 
+                padding:'10px', 
+                fontSize:13, 
+                cursor:'pointer' 
+              }}
+            />
+            <small style={{ color: '#888', fontSize: '11px', display: 'block', marginTop: '6px' }}>
+              Only PDF files are supported. Maximum size: 5MB.
+            </small>
+          </div>
+
           <button
             className="sub-btn"
-            style={{ background:'#1B8FA6' }}
-            onClick={() => { onSubmit(); onClose(); }}
+            style={{ background:'#1B8FA6', marginTop: '10px', padding: '14px', borderRadius: 10, color: '#fff', fontWeight: 700, border: 'none', cursor: 'pointer' }}
+            onClick={() => { 
+              if(form.name && form.email && form.phone && form.cv) {
+                onSubmit(); 
+                onClose(); 
+              } else {
+                alert("Please complete all fields and upload your PDF CV before submitting.");
+              }
+            }}
           >
             Submit Application →
           </button>
@@ -88,71 +150,39 @@ export default function Careers() {
   const [toast, setToast]       = useState('');
 
   const handleSubmit = () => {
-    setToast("Application submitted! We'll review and contact you soon.");
-    setTimeout(() => setToast(''), 3500);
+    setToast("Success! Your application has been received. Our HR team will contact you soon.");
+    setTimeout(() => setToast(''), 4000);
   };
 
   return (
     <>
       <Nav />
-
       <div className="page-wrapper">
-
-        {/* Hero */}
+        
+        {/* Hero Section */}
         <div className="page-hero">
           <div className="sec-tag sec-tag--gold">Careers</div>
           <h1 className="sec-title sec-title--white">Join Accelia Clinical Solutions</h1>
           <p style={{ color:'rgba(255,255,255,0.62)', maxWidth:620, fontSize:17, lineHeight:1.72 }}>
-            Be part of Accelia's expanding SMO ecosystem, driving high-impact clinical research
-            that transforms lives across India. Headquartered in Kolkata, with a strong presence
-            across all regions of West Bengal, Assam, Bhubaneswar, Bihar, and Uttar Pradesh.
+            Be part of India's fast-growing SMO. Headquartered in Kolkata, with expanding operations 
+            across West Bengal, Assam, Odisha, Bihar, and Uttar Pradesh.
           </p>
         </div>
 
-        {/* Working at */}
+        {/* Working at Accelia */}
         <section className="working-at">
-          <div className="sec-tag">Working at Accelia</div>
-          <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'clamp(30px,4vw,50px)', fontWeight:700, color:'#0B1F3A', marginBottom:14 }}>
-            Working at Accelia
-          </h2>
+          <div className="sec-tag">Culture</div>
+          <h2 className="sec-title">Working at Accelia</h2>
           <p style={{ color:'#5E6E82', fontSize:16, lineHeight:1.75, maxWidth:680 }}>
-            Join a passionate team of dedicated professionals working at the forefront of
-            clinical research in India. We offer a platform to grow, innovate, and lead in
-            the future of site management.
+            Join a passionate team of dedicated professionals at the forefront of clinical research. 
+            We offer a platform to grow, innovate, and lead.
           </p>
         </section>
 
-        {/* Departments */}
-        <section style={{ background:'#fff' }}>
-          <div className="sec-tag">Departments</div>
-          <h2 className="sec-title">Our Functions</h2>
-          <p className="sec-sub">Explore the diverse roles that power Accelia's clinical operations across India.</p>
-          <div className="career-cards">
-            {DEPARTMENTS.map(({ icon, title, desc }, i) => (
-              <div key={i} className="career-card">
-                <div style={{ fontSize:28, marginBottom:10 }}>{icon}</div>
-                <h3>{title}</h3>
-                <p>{desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Career Development */}
-        <section style={{ background:'#F2F7FA' }}>
-          <div className="sec-tag">Growth</div>
-          <h2 className="sec-title">Career Development</h2>
-          <p style={{ color:'#5E6E82', fontSize:16, lineHeight:1.78, maxWidth:680 }}>
-            We provide structured training pathways, mentorship, and hands-on opportunities through
-            programs like CRA Essentials and Associate PM tracks.
-          </p>
-        </section>
-
-        {/* Open Positions */}
-        <section>
+        {/* Open Positions Grid */}
+        <section id="openings">
           <div className="sec-tag">Open Positions</div>
           <h2 className="sec-title">Current Openings</h2>
-          <p className="sec-sub">Join us across our locations in West Bengal, Assam, Bhubaneswar, Bihar, and Uttar Pradesh.</p>
           <div className="job-list">
             {JOBS.map((j, i) => (
               <div key={i} className="job-card">
@@ -161,7 +191,10 @@ export default function Careers() {
                   <div className="job-meta">
                     <span className="j-tag">{j.dept}</span>
                     <span>📍 {j.location}</span>
-                    <span>⏱ {j.type}</span>
+                    {/* Display Openings Count */}
+                    <span style={{ color: '#1B8FA6', fontWeight: '700', marginLeft: '5px' }}>
+                      👥 {j.openings || 1} Openings
+                    </span>
                   </div>
                 </div>
                 <button className="btn-apply" onClick={() => setApplyJob(j)}>Apply Now</button>
@@ -170,11 +203,26 @@ export default function Careers() {
           </div>
         </section>
 
-        {/* Why Accelia */}
+        {/* Departments Section */}
+        <section style={{ background:'#fff' }}>
+          <div className="sec-tag">Departments</div>
+          <h2 className="sec-title">Our Functions</h2>
+          <div className="career-cards">
+            {DEPARTMENTS.map(({ icon, title, desc }, i) => (
+              <div key={i} className="career-card">
+                <div style={{ fontSize:32, marginBottom:12 }}>{icon}</div>
+                <h3>{title}</h3>
+                <p>{desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Why Accelia Section */}
         <section style={{ background:'#F2F7FA' }}>
-          <div className="sec-tag">Why Accelia</div>
-          <h2 className="sec-title">Why Work With Us</h2>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(235px,1fr))', gap:18 }}>
+          <div className="sec-tag">Why Us</div>
+          <h2 className="sec-title">Why Work With Accelia?</h2>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(250px,1fr))', gap:20 }}>
             {WHY.map(({ icon, title, desc }, i) => (
               <div key={i} className="why-card">
                 <div className="why-card__icon">{icon}</div>
@@ -185,27 +233,21 @@ export default function Careers() {
           </div>
         </section>
 
-        {/* Explore CTA */}
-        <section style={{ background:'#0B1F3A', textAlign:'center' }}>
-          <div className="sec-tag sec-tag--gold">Explore Opportunities</div>
-          <h2 className="sec-title sec-title--white">Ready to Make an Impact?</h2>
-          <p style={{ color:'rgba(255,255,255,0.62)', fontSize:16, lineHeight:1.72, maxWidth:580, margin:'0 auto 32px' }}>
-            We're hiring across Asia-Pacific, Europe, and North America. Join us and shape
-            the future of global clinical research.
-          </p>
-          <button className="btn-primary" onClick={() => window.scrollTo({ top: document.getElementById('openings')?.offsetTop || 400, behavior:'smooth' })}>
-            View Open Positions
+        {/* Final CTA */}
+        <section style={{ background:'#0B1F3A', textAlign:'center', padding: '80px 20px' }}>
+          <div className="sec-tag sec-tag--gold">Your Future Start Here</div>
+          <h2 className="sec-title sec-title--white">Ready to Shape the Future of Research?</h2>
+          <button className="btn-primary" onClick={() => window.scrollTo({ top: document.getElementById('openings')?.offsetTop || 1200, behavior:'smooth' })}>
+            Explore All Open Positions
           </button>
         </section>
 
         <Footer />
       </div>
 
-      {/* Apply Modal */}
+      {/* Dynamic Modals & Toasts */}
       <ApplyModal job={applyJob} onClose={() => setApplyJob(null)} onSubmit={handleSubmit} />
-
-      {/* Toast */}
-      {toast && <div className="toast">{toast}</div>}
+      {toast && <div className="toast-success-fixed">{toast}</div>}
     </>
   );
 }

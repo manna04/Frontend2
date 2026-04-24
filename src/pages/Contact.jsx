@@ -8,7 +8,7 @@ import Footer from '../shared/Footer';
 import { SOLUTIONS } from '../shared/constants';
 import '../assets/css/variables.css';
 import '../assets/css/global.css';
-import '../assets/css/pages.css';
+import '../assets/css/Contact.css';
 
 const CONTACT_DETAILS = [
   { icon:'📧', label:'Email',           val:'acceliaclinicalsolution@gmail.com' },

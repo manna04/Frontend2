@@ -1,0 +1,177 @@
+/* ================================================
+   AllNews.css
+   ================================================ */
+
+.all-news-wrapper {
+  padding-top: 70px;
+  background: #fdfdfd;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.dynamic-hero-header {
+  background: #0B1F3A;
+  padding: 100px 20px;
+  text-align: center;
+  color: white;
+}
+
+.main-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 5vw, 52px);
+  margin: 15px 0;
+  font-weight: 700;
+}
+
+.sub-description {
+  color: rgba(255,255,255,0.7);
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* Grid Layout */
+.dynamic-list-container {
+  max-width: 1200px;
+  margin: 70px auto;
+  padding: 0 30px;
+}
+
+.dynamic-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 30px;
+}
+
+/* Card Styling */
+.dynamic-item-card {
+  background: white;
+  border: 1px solid #f0f0f0;
+  padding: 35px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.dynamic-item-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(11, 31, 58, 0.08);
+  border-color: #1B8FA6;
+}
+
+.type-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #1B8FA6;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.dynamic-item-card h3 {
+  color: #0B1F3A;
+  font-size: 22px;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.dynamic-item-card p {
+  color: #5E6E82;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.card-action-btn {
+  margin-top: 25px;
+  background: none;
+  border: none;
+  color: #1B8FA6;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  transition: gap 0.3s;
+}
+
+/* --- Modal Styling --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 31, 58, 0.85);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal-box {
+  background: white;
+  width: 100%;
+  max-width: 600px;
+  padding: 50px 40px;
+  border-radius: 24px;
+  position: relative;
+  animation: modalSlideUp 0.4s ease;
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: #f5f7f9;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  color: #0B1F3A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  color: #0B1F3A;
+  margin: 15px 0;
+  font-weight: 700;
+}
+
+.modal-desc {
+  color: #5E6E82;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.modal-footer-info {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  color: #1B8FA6;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dynamic-hero-header { padding: 70px 20px; }
+  .modal-box { padding: 40px 25px; }
+  .dynamic-list-grid { grid-template-columns: 1fr; }
+}
