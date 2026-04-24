@@ -3,49 +3,23 @@ import { Link } from 'react-router-dom';
 import Nav from '../shared/Nav';
 import Footer from '../shared/Footer';
 import { LOCATIONS } from '../shared/constants';
-import { REGIONS } from '../shared/constants';
 import '../assets/css/variables.css';
 import '../assets/css/global.css';
 import '../assets/css/pages.css';
 
-// const REGIONS = [
-//   {
-//     id: 'asia',
-//     label: 'Asia-Pacific',
-//     heading: 'Asia-Pacific Offices',
-//     desc: 'Our regional hub in Singapore coordinates with offices in India, South Korea, and Australia to deliver cost-effective, regulatory-compliant clinical operations.',
-//     offices: [
-//       { country: 'Singapore', detail: '100 Cross Street, Singapore 048421' },
-//       { country: 'India',     detail: 'Bangalore, Hyderabad' },
-//       { country: 'South Korea', detail: 'Seoul' },
-//       { country: 'Australia', detail: 'Sydney, Melbourne' },
-//     ],
-//     mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26584.524730884927!2d103.8500437!3d1.2904759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da19a308e65a2d%3A0xdee37b32b0dd8b55!2sSingapore!5e0!3m2!1sen!2ssg!4v1689939846945!5m2!1sen!2ssg',
-//   },
-//   {
-//     id: 'europe',
-//     label: 'Europe',
-//     heading: 'European Offices',
-//     desc: 'Strategically located in Western and Eastern Europe, our offices provide agile solutions for multicenter clinical trials.',
-//     offices: [
-//       { country: 'Germany',        detail: 'Frankfurt' },
-//       { country: 'United Kingdom', detail: 'London' },
-//       { country: 'Poland',         detail: 'Warsaw' },
-//     ],
-//     mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100408.04921141723!2d8.5511379!3d50.1109221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bda9c0f0a1e481%3A0x6e5e4571967b2d71!2sFrankfurt%2C%20Germany!5e0!3m2!1sen!2sde!4v1689940074170!5m2!1sen!2sde',
-//   },
-//   {
-//     id: 'north',
-//     label: 'North America',
-//     heading: 'North American Offices',
-//     desc: "Accelia's presence in North America ensures alignment with FDA regulations and deep access to patient populations.",
-//     offices: [
-//       { country: 'USA',    detail: 'Boston, San Francisco' },
-//       { country: 'Canada', detail: 'Toronto' },
-//     ],
-//     mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2948.708906231059!2d-71.05888098454292!3d42.3600829791866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e370aaf30425e3%3A0x62f2aa26de0d13b7!2sBoston%2C%20MA!5e0!3m2!1sen!2sus!4v1689940126574!5m2!1sen!2sus',
-//   }, 
-// ];
+const REGIONS = [
+  {
+    id: 'asia',
+    label: 'Asia-Pacific',
+    heading: 'Asia-Pacific Offices',
+    desc: 'Our regional hub in Kolkata coordinates with offices in India, South Korea, and Australia to deliver cost-effective, regulatory-compliant clinical operations.',
+    offices: [
+      { country: 'Kolkata', detail: '100 Cross Street, Kolkata 700056' },
+      { country: 'India', detail: 'Belghoria' },
+    ],
+    mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14727.813734983334!2d88.37690549090757!3d22.655524746030196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89dd24f0f9565%3A0x203ebe380ee4aae9!2sJatindas%20Nagar%2C%20Belghoria%2C%20Kolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1777017876978!5m2!1sen!2sin'
+  },
+];
 
 export default function Locations() {
   const [activeTab, setActiveTab] = useState('asia');

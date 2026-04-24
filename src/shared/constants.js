@@ -52,19 +52,3 @@ export const VALUES = [
   { icon: "🎯", title: "Precision", desc: "Every protocol step executed with meticulous attention to detail." },
   { icon: "🔒", title: "Compliance", desc: "Unwavering adherence to GCP, ICH guidelines." },
 ];
-
-export const REGIONS = [
-  {
-    id: 'asia',
-    label: 'Asia-Pacific',
-    heading: 'Asia-Pacific Offices',
-    desc: 'Our regional hub in Singapore coordinates with offices in India, South Korea, and Australia to deliver cost-effective, regulatory-compliant clinical operations.',
-    offices: [
-      { country: 'Singapore', detail: '100 Cross Street, Singapore 048421' },
-      { country: 'India',     detail: 'Bangalore, Hyderabad' },
-      { country: 'South Korea', detail: 'Seoul' },
-      { country: 'Australia', detail: 'Sydney, Melbourne' },
-    ],
-    mapSrc: 'https://www.google.com/maps/place/Kolkata,+West+Bengal/@22.5354273,88.3473527,12z/data=!3m1!4b1!4m6!3m5!1s0x39f882db4908f667:0x43e330e68f6c2cbc!8m2!3d22.5743545!4d88.3628734!16zL20vMGN2dzk?entry=ttu&g_ep=EgoyMDI2MDQyMS4wIKXMDSoASAFQAw%3D%3D',
-  },
-];
