@@ -1,6 +1,3 @@
-// =====================================================
-// Footer.jsx — Shared Footer Component
-// =====================================================
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../assets/css/pages.css';

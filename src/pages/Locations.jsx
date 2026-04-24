@@ -1,11 +1,9 @@
-// =====================================================
-// Locations.jsx — Locations Page
-// =====================================================
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from '../shared/Nav';
 import Footer from '../shared/Footer';
 import { LOCATIONS } from '../shared/constants';
+
 import '../assets/css/variables.css';
 import '../assets/css/global.css';
 import '../assets/css/pages.css';

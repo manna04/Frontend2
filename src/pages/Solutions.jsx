@@ -1,6 +1,3 @@
-// =====================================================
-// Solutions.jsx — Solutions Page
-// =====================================================
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Nav from '../shared/Nav';
@@ -73,7 +70,6 @@ export default function Solutions() {
             {SOLUTIONS.map((s, i) => (
               <div key={i} className="solution-card" onClick={() => setModal(s)}>
                 
-                {/* 1. Image Area with Hover Overlay */}
                 <div 
                   className="solution-card__img" 
                   style={{ backgroundImage: `url(${SOLUTION_IMAGES[i]})` }}
@@ -85,7 +81,6 @@ export default function Solutions() {
                   </div>
                 </div>
 
-                {/* 2. Content Below Image (Visible by default) */}
                 <div className="solution-card__icon">{s.icon}</div>
                 <div className="solution-card__title">{s.title}</div>
               </div>
