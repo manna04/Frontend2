@@ -47,15 +47,9 @@ export const JOBS = [
 
 export const LOCATIONS = [
   { icon: "🏢", name: "Kolkata", note: "Headquarters – Strategic Hub", hq: true },
-  { icon: "📍", name: "West Bengal", note: "All Regions Covered" },
-  { icon: "📍", name: "Assam", note: "North-East Presence" },
-  { icon: "📍", name: "Bhubaneswar", note: "Odisha Operations" },
-  { icon: "📍", name: "Bihar", note: "Eastern Zone Coverage" },
-  { icon: "📍", name: "Uttar Pradesh", note: "Northern Zone Expansion" },
 ];
 
 export const VALUES = [
   { icon: "🎯", title: "Precision", desc: "Every protocol step executed with meticulous attention to detail." },
   { icon: "🔒", title: "Compliance", desc: "Unwavering adherence to GCP, ICH guidelines." },
-  // ... baki values thakbe
 ];
