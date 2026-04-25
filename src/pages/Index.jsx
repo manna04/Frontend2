@@ -242,7 +242,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ── CAREERS STRIP}
+      {/* ── CAREERS STRIP ── */}
       <section style={{ background: '#F2F7FA' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 20, marginBottom: 36 }}>
           <div>
