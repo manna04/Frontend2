@@ -1,6 +1,3 @@
-// =====================================================
-// Loader.jsx — Page Load Spinner
-// =====================================================
 import React from 'react';
 import '../assets/css/pages.css';
 
