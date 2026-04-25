@@ -1,6 +1,3 @@
-// =====================================================
-// Careers.jsx — Full Version with CV Upload & Vacancies
-// =====================================================
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Nav from '../shared/Nav';
@@ -101,7 +98,7 @@ function ApplyModal({ job, onClose, onSubmit }) {
             />
           </div>
 
-          {/* PDF CV Upload */}
+          
           <div>
             <label style={{ display:'block', color:'#5E6E82', fontSize:12.5, marginBottom:6, fontWeight:600 }}>Upload Your CV (PDF Only) *</label>
             <input
