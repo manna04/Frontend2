@@ -9,13 +9,11 @@ import '../assets/css/Index.css';
 import '../assets/css/pages.css';
 import clinicVideo from '../assets/images/clinic_video.mov';
 
-// Updated Modal component with PDF Upload and Vacancy Logic
 function Modal({ modal, onClose, onContact }) {
   const [form, setForm] = useState({ name: '', email: '', phone: '', cv: null });
 
   if (!modal) return null;
 
-  // PDF only validation logic
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file && file.type !== "application/pdf") {
@@ -62,7 +60,7 @@ function Modal({ modal, onClose, onContact }) {
           </>
         )}
 
-        {/* --- APPLY MODAL (Updated) --- */}
+        
         {modal.type === 'apply' && (
           <>
             <span className="m-tag">Apply Now</span>
@@ -70,7 +68,7 @@ function Modal({ modal, onClose, onContact }) {
               {modal.data.title}
             </h2>
             
-            {/* Dynamic Vacancy Display */}
+            
             <div style={{ marginBottom: 15 }}>
               <span style={{ background: '#E6F4F1', color: '#1B8FA6', padding: '4px 10px', borderRadius: '5px', fontSize: '12px', fontWeight: '700', border: '1px solid rgba(27, 143, 166, 0.2)' }}>
                 👥 Vacancies: {modal.data.openings || 1} Positions
@@ -94,7 +92,7 @@ function Modal({ modal, onClose, onContact }) {
                   style={{ width: '100%', background: '#F2F7FA', border: '1px solid #D8E4ED', borderRadius: 9, padding: '11px 14px', fontSize: 13.5, outline: 'none' }} />
               </div>
 
-              {/* PDF Only Upload Field */}
+              
               <div>
                 <label style={{ display: 'block', color: '#5E6E82', fontSize: 12.5, marginBottom: 5, fontWeight: 600 }}>Upload Your CV (PDF Only) *</label>
                 <input type="file" required accept="application/pdf" onChange={handleFileChange}
