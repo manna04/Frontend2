@@ -1,6 +1,3 @@
-// =====================================================
-// Index.jsx — Home Page (Fully Dynamic)
-// =====================================================
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Nav from '../shared/Nav';
@@ -247,7 +244,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ── CAREERS STRIP (Updated with Dynamic Vacancy) ── */}
+      {/* ── CAREERS STRIP}
       <section style={{ background: '#F2F7FA' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 20, marginBottom: 36 }}>
           <div>
