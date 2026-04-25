@@ -1,6 +1,3 @@
-// =====================================================
-// Contact.jsx — Contact Page
-// =====================================================
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from '../shared/Nav';
@@ -67,7 +64,7 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* Right — form */}
+            
             <div className="c-form">
               {submitted ? (
                 <div className="form-success">
